@@ -1,5 +1,5 @@
 import React from 'react';
-import MyComponent from '../App';
+import MyComponent from '../Routes';
 
 describe('components', () => {
   describe('App', () => {

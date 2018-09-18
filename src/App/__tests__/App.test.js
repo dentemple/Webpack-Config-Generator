@@ -1,8 +1,8 @@
 import React from 'react';
-import MyComponent from '../Signup';
+import MyComponent from '../../App';
 
 describe('components', () => {
-  describe('Signup', () => {
+  describe('App', () => {
     it('should render without crashing', () => {
       shallow(<MyComponent />);
     });

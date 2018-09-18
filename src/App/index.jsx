@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 
 import Routes from './Routes';
+import RenderStore from '../util/RenderStore';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
         <main className="main__homepage">
           <Routes />
         </main>
+        <RenderStore />
       </div>
     );
   }
