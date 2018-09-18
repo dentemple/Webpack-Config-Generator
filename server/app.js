@@ -1,7 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser'); // Does stream concatenation in Node to not worry about read & write streams
-const cookieParser = require('cookie-parser');
 const path = require('path');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -10,23 +10,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '..', 'public'))); // if we don't have any files, we can run this
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+/* TODO: Move to cloud service */
+const mongoose = require('mongoose');
+const URI = 'mongodb://localhost:27017/webpack-config-generator';
+mongoose.connect(
+  URI,
+  { useNewUrlParser: true }
+);
+
+mongoose.connection
+  .once('open', (err, client) => {})
+  .on('error', function(error) {});
 
 // Routers
-app.use('/auth', require('./auth'));
-app.use('/api', require('./api'));
-
-app.post('*', (req, res) => {
-  res.send();
-});
+app.use('/auth', require('./auth/routes'));
+app.use('/api', require('./api/routes'));
 
 // Default Route
 app.get('*', (_, res) => {

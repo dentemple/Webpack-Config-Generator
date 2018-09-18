@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
-// Route components
-import Form from './Form';
-import DownloadPage from './DownloadPage';
+import Routes from './Routes';
 
 class App extends Component {
   constructor(props) {
@@ -18,8 +15,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // We set the cookie here because this is the first route the app hits,
-    //    not express's "/" route
     this.setCookie();
   }
 
@@ -35,13 +30,8 @@ class App extends Component {
             Webpack Config Generator
           </h1>
         </header>
-        {/* Treat these routes as if they're just regular components 
-            that happen to be nested within an if statement */}
         <main className="main__homepage">
-          <Switch>
-            <Route exact path="/download" component={DownloadPage} />
-            <Route exact path="/" render={() => <Form />} />
-          </Switch>
+          <Routes />
         </main>
       </div>
     );

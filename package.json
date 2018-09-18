@@ -63,7 +63,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/server/test/setupTests.js",
     "moduleFileExtensions": [
       "js",
       "jsx"
